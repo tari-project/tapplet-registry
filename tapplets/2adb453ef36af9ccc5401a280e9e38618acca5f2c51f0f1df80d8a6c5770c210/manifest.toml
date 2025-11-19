@@ -3,20 +3,32 @@ version = "0.1.0"
 friendly_name = "Password Manager"
 description = "A simple password manager tapplet."
 publisher = "a86b454a33b98f7f4f296a86dcbf08eaa816de5347d5c932b5fed8a95c52d04a"
+public_key = "2adb453ef36af9ccc5401a280e9e38618acca5f2c51f0f1df80d8a6c5770c210"
 git = { url = "https://github.com/stringhandler/password_manager_tapplet", rev = "main" }
 
 [api]
-methods = ["greet"]
+methods = ["save", "load"]
 
-[api.greet]
-description = "Returns a greeting message."
+[api.save]
+description = "Saves a password entry."
+[api.save.params]
+site = { type = "string", description = "The site to save the password for." }
+username = { type = "string", description = "The username for the site." }
+password = { type = "string", description = "The password to save." }
 
-[api.greet.params]
-name = { type = "string", description = "The name to greet." }
-
-[api.greet.returns]
+[api.save.returns]
 type = "string"
-description = "A greeting message."
+description = "Confirmation message."
+
+[api.load]
+description = "Loads password entries for a site."
+
+[api.load.params]
+
+[api.load.returns]
+type = "array"
+items = { type = "object", properties = { username = { type = "string" }, password = { type = "string" } } }
+description = "List of username and password entries."
 
 [sigs]
 todo = "add sigs here"
