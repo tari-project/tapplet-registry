@@ -27,8 +27,8 @@ description = "Loads password entries for a site."
 
 [api.load.returns]
 type = "array"
-items = { type = "object", properties = { username = { type = "string" }, password = { type = "string" } } }
-description = "List of username and password entries."
+items = { type = "object", properties = { site = { type = "string" }, username = { type = "string" }, password = { type = "string" } } }
+description = "List of site, username, and password entries."
 
 [sigs]
 todo = "add sigs here"
